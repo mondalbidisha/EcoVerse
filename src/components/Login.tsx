@@ -24,31 +24,30 @@ const Login = () => {
   };
 
   async function sendRequest() {
-    navigate('/dashboard');
-    // try {
-    //   setLoading(true);
-    //   if (authInputs.email && authInputs.password) {
-    //     const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, authInputs);
-    //     const token = response.data.jwt;
-    //     localStorage.setItem('token', token); 
-    //     localStorage.setItem('user', JSON.stringify(response?.data?.user || {}));
-    //     navigate('/blogs');
-    //   } else {
-    //     toast.error('Email & Password are mandatory fields.');
-    //   }
-    // } catch (error) {
-    //   if (axios.isAxiosError(error)) {
-    //     if (error.response?.status) {
-    //       toast.error(error.response?.data?.error || 'Email or Password Mismatch');
-    //     } else if(error.response?.data?.error) {
-    //       toast.error('Something went wrong');
-    //     }
-    //   } else {
-    //     toast.error('Something went wrong');
-    //   }
-    // } finally {
-    //   setLoading(false);
-    // }
+    try {
+      setLoading(true);
+      if (authInputs.email && authInputs.password) {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, authInputs);
+        const token = response.data.jwt;
+        localStorage.setItem('token', token); 
+        localStorage.setItem('user', JSON.stringify(response?.data?.user || {}));
+        navigate('/dashboard');
+      } else {
+        toast.error('Email & Password are mandatory fields.');
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status) {
+          toast.error(error.response?.data?.error || 'Email or Password Mismatch');
+        } else if(error.response?.data?.error) {
+          toast.error('Something went wrong');
+        }
+      } else {
+        toast.error('Something went wrong');
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

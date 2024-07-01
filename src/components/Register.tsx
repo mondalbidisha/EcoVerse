@@ -42,32 +42,31 @@ const Register = () => {
   };
 
   async function sendRequest() {
-    navigate('/dashboard');
-    // try {
-    //   setLoading(true);
-    //   if (passwordError) {
-    //     toast.error('Password is weak');
-    //     return;
-    //   }
-    //   if (!validateEmail(authInputs.email)) {
-    //     toast.error('Invalid Email');
-    //     return;
-    //   }
-    //   if (authInputs.name && authInputs.email && authInputs.password) {
-    //     const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, authInputs);
-    //     const { jwt, user } = response.data;
-    //     localStorage.setItem('token', jwt);
-    //     localStorage.setItem('user', JSON.stringify(user));
-    //     navigate('/blogs');
-    //   } else {
-    //     toast.error('Name, Email & Password are mandatory fields.');
-    //   }
-    // } catch (ex: any) {
-    //   console.log(ex);
-    //   toast.error(ex.response.data.error);
-    // } finally {
-    //   setLoading(false);
-    // }
+    try {
+      setLoading(true);
+      if (passwordError) {
+        toast.error('Password is weak');
+        return;
+      }
+      if (!validateEmail(authInputs.email)) {
+        toast.error('Invalid Email');
+        return;
+      }
+      if (authInputs.name && authInputs.email && authInputs.password) {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, authInputs);
+        const { jwt, user } = response.data;
+        localStorage.setItem('token', jwt);
+        localStorage.setItem('user', JSON.stringify(user));
+        navigate('/dashboard');
+      } else {
+        toast.error('Name, Email & Password are mandatory fields.');
+      }
+    } catch (ex: any) {
+      console.log(ex);
+      toast.error(ex.response.data.error);
+    } finally {
+      setLoading(false);
+    }
   }
   return (
     <div className="text-center flex flex-col justify-center items-center h-screen md:h-auto bg-slate-100">
