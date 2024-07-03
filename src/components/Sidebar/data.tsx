@@ -10,6 +10,11 @@ export const data = [
     link: "/dashboard",
   },
   {
+    tooltip: "Actions",
+    icon: <HomeIcon />,
+    link: "/actions",
+  },
+  {
     tooltip: "Acitity Logs",
     icon: <MediaIcon />,
     link: "/activity",
