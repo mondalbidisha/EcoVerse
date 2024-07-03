@@ -28,13 +28,13 @@ type AvatarProps = {
     return (
       <div
         onClick={onClick}
-        className={`cursor-pointer border-2 border-green-700 relative inline-flex items-center justify-center overflow-hidden bg-gray-800 hover:bg-gray-300 rounded-full ${containerSize} group`}
+        className={`cursor-pointer border-2 border-green-700 relative inline-flex items-center justify-center overflow-hidden bg-gray-300 rounded-full ${containerSize} group`}
       >
         {imageSrc ? (
           <img src={imageSrc} />
         ) : (
           <>
-            <span className={`font-medium ${textSize} text-gray-200 group-hover:text-gray-950 `}>
+            <span className={`font-medium ${textSize} text-gray-950 `}>
               {name?.split(' ')?.[0]?.[0]}
               {name?.split(' ')?.[1]?.[0]}
             </span>
