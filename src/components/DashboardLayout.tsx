@@ -10,13 +10,26 @@ const DashboardLayout = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const [userDetails, setUserDetails] = useState({});
+    const [userActions, setUserActions] = useState([]);
 
-    const getUserActionsData = async () => {
+    const getUserData = async () => {
       const loggedInUser = localStorage.getItem('user');
       if(loggedInUser) {
         const userObj = JSON.parse(loggedInUser);
         const response = await axios.get(`${BACKEND_URL}/api/v1/user/${userObj.id}`);
         setUserDetails(response.data.user);
+        getUserActionsData()
+      } else {
+        navigate('/login');
+      }
+    }
+
+    const getUserActionsData = async () => {
+      const loggedInUser = localStorage.getItem('user');
+      if(loggedInUser) {
+        const userObj = JSON.parse(loggedInUser);
+        const response = await axios.get(`${BACKEND_URL}/api/v1/userAction/${userObj.id}`);
+        setUserActions(response.data.payload);
         setIsLoading(false);
       } else {
         navigate('/login');
@@ -25,9 +38,9 @@ const DashboardLayout = () => {
 
     useEffect(() => {
       if(isLoading) {
-        getUserActionsData()
+        getUserData()
       }
-    }, [userDetails])
+    }, [userDetails, userActions])
 
     return (
       <Layout>
@@ -37,13 +50,15 @@ const DashboardLayout = () => {
           </div>
           <div className="w-full">
             {
-              isLoading ?
-              <Loader 
-                message={"Loading ...."}
-              />
+                isLoading
+              ?
+                <Loader 
+                  message={"Loading ...."}
+                />
               : <DashboardContainer 
-                userDetails={userDetails}
-              />
+                  userDetails={userDetails}
+                  userActions={userActions}
+                />
             }
           </div>
         </div>

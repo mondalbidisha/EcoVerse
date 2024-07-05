@@ -15,14 +15,23 @@ export function DataTable(props: any) {
   const { userActions } = props;
   const [tableData, setTableData] = useState([]);
 
+  const formatDateTime = (isoString: string): string => {
+    const date = new Date(isoString);
+    const formattedDate = date.toLocaleDateString('en-GB'); // You can adjust the locale as needed
+    const formattedTime = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  
+    return `${formattedDate} ${formattedTime}`;
+  };
+  
+
   const constructTableData = () => {
     let data: any = []
     userActions.forEach((actionObj: any) => {
       const obj: any = {
-        name: "User Action",
+        name: actionObj.name,
         caption: actionObj.description,
         date: actionObj.logDate,
-        impact: 10 
+        impact: actionObj.impact 
       }
       data.push(obj)
     });
@@ -33,7 +42,7 @@ export function DataTable(props: any) {
     if(userActions && userActions.length) {
       constructTableData()  
     }
-  })
+  }, [userActions])
 
   return (
     <Card>
@@ -55,7 +64,7 @@ export function DataTable(props: any) {
                 {item.caption}
               </TableCell>
               <TableCell>
-                {item.date}
+                {formatDateTime(item.date)}
               </TableCell>
               <TableCell>
                 <Badge color="emerald" icon={RiFlag2Line}>
