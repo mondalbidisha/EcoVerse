@@ -49,6 +49,7 @@ const AddActionLayout = () => {
 								</div>
 								<div className="flex flex-col flex-wrap sm:flex-row">
 									<AddActionForm 
+                    action={action}
                     userId={userId}
                     actionId={id}
                   />

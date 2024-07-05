@@ -4,7 +4,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
-import { UUID } from 'crypto';
 import Spinner from './Spinner';
 
 function TextInput({ label, ...props }: React.ComponentPropsWithoutRef<'input'> & { label: string }) {
@@ -48,17 +47,21 @@ function FileInput({ label, ...props }: React.ComponentPropsWithoutRef<'input'> 
 }
 
 interface userActionInput {
+  name: string;
+  impact: number;
   description: string;
-  actionId: UUID;
-  userId: UUID;
+  actionId: string;
+  userId: string;
   image?: string;
 }
 
 const AddActionForm = (props: any) => {
-  const { actionId, userId } = props;
+  const { action, actionId, userId } = props;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [userActionInputs, setuserActionInputs] = useState<userActionInput>({
+    name: action.name,
+    impact: action.impactPoints,
     description: '',
     actionId: actionId,
     userId: userId

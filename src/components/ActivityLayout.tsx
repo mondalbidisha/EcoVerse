@@ -46,7 +46,6 @@ const ActivityLayout = () => {
       if(isActionsLoading) {
         getUserActionsData()
       }
-
     }, [userDetails, userActions])
 
     return (
