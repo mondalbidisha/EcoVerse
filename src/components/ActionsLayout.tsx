@@ -82,7 +82,7 @@ const ActionsLayout = () => {
                                   /* eslint-disable react/jsx-key */
                                   <Link to={`/action/${item.id}`}>
                                     <div className="my-5 dark">
-                                      <ActionBox {...item} key={item.id} />
+                                      <ActionBox {...item} key={item.id} cta={"Log Action"}/>
                                     </div>
                                   </Link>
                                 ))}

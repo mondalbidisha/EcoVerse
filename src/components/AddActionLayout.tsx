@@ -47,6 +47,9 @@ const AddActionLayout = () => {
 								<div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px]">
 									{action?.description}
 								</div>
+                <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px]">
+                  Capture the moment, snap a pic, and log your sustainable action to make a big impact today!
+								</div>
 								<div className="flex flex-col flex-wrap sm:flex-row">
 									<AddActionForm 
                     action={action}

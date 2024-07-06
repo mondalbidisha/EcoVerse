@@ -6,6 +6,7 @@ import Activity from './pages/Activity';
 import Challenge from './pages/Challenge';
 import Actions from './pages/Actions';
 import Action from './pages/Action';
+import Badge from './pages/Badge';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/actions" element={<Actions />} />
         <Route path="/action/:id" element={<Action />} />
         <Route path="/challenge" element={<Challenge />} />
+        <Route path="/achievements" element={<Badge />} />
         <Route path="/" element={<Signin />} />
       </Routes>
     </BrowserRouter>
