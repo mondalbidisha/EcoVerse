@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { data } from "./data";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
@@ -10,6 +10,15 @@ const style = {
 
 export function SidebarItems() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const logout = (name: string) => {
+    if(name !== "Logout") {
+      return
+    }
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate('/login');
+  }
   return (
     <ul>
       {data.map((item) => (
@@ -18,6 +27,7 @@ export function SidebarItems() {
             <span
               className={`${style.link} 
                ${item.link === pathname ? style.active : style.inactive}`}
+               onClick={() => logout(item.tooltip)}
             >
               <TooltipProvider>
                 <Tooltip>

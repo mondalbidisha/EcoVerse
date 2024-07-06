@@ -1,7 +1,7 @@
 import { cn } from "../lib/utils";
 
 export function ActionBox(props: any) {
-    const { name, description } = props;
+    const { name, description, cta } = props;
     return (
       <figure
         className={cn(
@@ -23,7 +23,7 @@ export function ActionBox(props: any) {
               {description}
             </p>
             <div className="text-sky-400 font-bold text-lg">
-              Log Action
+             {cta}
             </div>
           </div>
         </div>
