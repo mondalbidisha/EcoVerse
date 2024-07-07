@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ActionBox } from "./ActionBox";
 import { Loader } from "./Loader";
 import LoaderSVG from "./../assets/loader.svg";
+import generateLoadingMessage from "../util/genericUtils";
 
 const ActionsLayout = () => {
 		const navigate = useNavigate();
@@ -56,7 +57,7 @@ const ActionsLayout = () => {
                 isCategoriesLoading
                 ?
                   <Loader 
-                    message={"Loading ...."}
+                    message={generateLoadingMessage()}
                   />
                 :
                   <>
