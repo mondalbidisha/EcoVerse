@@ -1,9 +1,10 @@
-import BadgeLayout from "../components/BadgeLayout";
+// import BadgeLayout from "../components/BadgeLayout";
 
 const Badge = () => {
   return (
     <div className="grid grid-cols-1 min-w-screen min-h-screen">
-        <BadgeLayout />
+        {/* <BadgeLayout /> */}
+        Hello World
     </div>
   );
 };

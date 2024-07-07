@@ -5,6 +5,7 @@ import axios from "axios";
 import { Loader } from "./Loader";
 import DashboardContainer from "./DashboardContainer";
 import { useNavigate } from "react-router-dom";
+import generateLoadingMessage from "../util/genericUtils";
 
 const DashboardLayout = () => {
     const navigate = useNavigate();
@@ -18,19 +19,8 @@ const DashboardLayout = () => {
         const userObj = JSON.parse(loggedInUser);
         const response = await axios.get(`${BACKEND_URL}/api/v1/user/${userObj.id}`);
         setUserDetails(response.data.user);
-        getUserActionsData()
-      } else {
-        navigate('/login');
-      }
-    }
-
-    const getUserActionsData = async () => {
-      const loggedInUser = localStorage.getItem('user');
-      if(loggedInUser) {
-        const userObj = JSON.parse(loggedInUser);
-        const response = await axios.get(`${BACKEND_URL}/api/v1/userAction/${userObj.id}`);
-        setUserActions(response.data.payload);
-        setIsLoading(false);
+        setUserActions(response.data.user.UserAction);
+        setIsLoading(false)
       } else {
         navigate('/login');
       }
@@ -40,7 +30,7 @@ const DashboardLayout = () => {
       if(isLoading) {
         getUserData()
       }
-    }, [userDetails, userActions])
+    }, [userDetails])
 
     return (
       <Layout>
@@ -53,7 +43,7 @@ const DashboardLayout = () => {
                 isLoading
               ?
                 <Loader 
-                  message={"Loading ...."}
+                  message={generateLoadingMessage()}
                 />
               : <DashboardContainer 
                   userDetails={userDetails}

@@ -28,7 +28,7 @@ function TextInput({ label, ...props }: React.ComponentPropsWithoutRef<'input'> 
   );
 }
 
-function FileInput({ label, ...props }: React.ComponentPropsWithoutRef<'input'> & { label: string }) {
+function FileInput() {
   let id = useId();
 
   return (
@@ -110,7 +110,7 @@ const AddActionForm = (props: any) => {
                 setuserActionInputs({ ...userActionInputs, description: event.target.value });
               }}
             />
-            <FileInput label="Upload an Image" />
+            <FileInput />
           </div>
           <div className="flex justify-end">
             <button id="saveForm" className="mt-6" disabled={loading} onClick={sendRequest}>

@@ -69,7 +69,7 @@ const ChallengeLayout = () => {
           <div className="text-center text-slate-100 text-3xl font-medium uppercase opacity-90 tracking-[4px] mb-10">
             Sustainability Challenges
           </div>
-          <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-20 mb-10">
+          <div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-20 mb-10">
             Challenges are designed for short-term learning, lasting anywhere from a week to several semester. 
             They help you focus on specific actions that support learning goals, environmental objectives, or sustainability milestones. 
             These challenges offer fun, bite-sized learning experiences, especially for tackling real-world issues in sustainability and social justice.

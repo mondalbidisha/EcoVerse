@@ -6,14 +6,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
 import { DataTable } from "./DataTable";
-import LoaderSVG from "./../assets/loader.svg";
+import generateLoadingMessage from "../util/genericUtils";
 
 const ActivityLayout = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const [userDetails, setUserDetails] = useState({});
     const [userActions, setUserActions] = useState([]);
-    const [isActionsLoading, setIsActionsLoading] = useState(true);
 
     const getUserData = async () => {
       const loggedInUser = localStorage.getItem('user');
@@ -21,19 +20,8 @@ const ActivityLayout = () => {
         const userObj = JSON.parse(loggedInUser);
         const response = await axios.get(`${BACKEND_URL}/api/v1/user/${userObj.id}`);
         setUserDetails(response.data.user);
+        setUserActions(response.data.user.UserAction)
         setIsLoading(false);
-      } else {
-        navigate('/login');
-      }
-    }
-
-    const getUserActionsData = async () => {
-      const loggedInUser = localStorage.getItem('user');
-      if(loggedInUser) {
-        const userObj = JSON.parse(loggedInUser);
-        const response = await axios.get(`${BACKEND_URL}/api/v1/userAction/${userObj.id}`);
-        setUserActions(response.data.payload);
-        setIsActionsLoading(false);
       } else {
         navigate('/login');
       }
@@ -42,9 +30,6 @@ const ActivityLayout = () => {
     useEffect(() => {
       if(isLoading) {
         getUserData()
-      }
-      if(isActionsLoading) {
-        getUserActionsData()
       }
     }, [userDetails, userActions])
 
@@ -59,26 +44,18 @@ const ActivityLayout = () => {
               isLoading 
               ?
                 <Loader 
-                  message={"Loading ...."}
+                  message={generateLoadingMessage()}
                 />
               : 
                 <>
                   <ActivityCards 
                     userDetails={userDetails}
                   />
-                  {
-                    isActionsLoading
-                    ?
-                      <div className="w-full flex flex-row justify-center mt-5">
-                        <img src={LoaderSVG} width={150} height={150} alt="Loading..." />
-                      </div>
-                    :
-                      <div className="w-full min-h-[200px] md:mx-3 mt-5">
-                        <DataTable 
-                          userActions={userActions}
-                        />
-                      </div>
-                  }
+                  <div className="w-full min-h-[200px] md:mx-3 mt-5">
+                    <DataTable 
+                      userActions={userActions}
+                    />
+                  </div>
                 </>
           } 
           </div>

@@ -6,8 +6,30 @@ import axios from "axios";
 import { Loader } from "./Loader";
 import AddActionForm from "./AddActionForm";
 
+type action = {
+  id: string;
+  name: string;
+  description: string;
+  actionPoints: number;
+  impactPoints: number;
+  co2Saved: number;
+  waterSaved: number;
+  wasteSaved: number;
+  categoryId: string;
+}
+
 const AddActionLayout = () => {
-    const [action, setAction] = useState({});
+    const [action, setAction] = useState<action>({
+      id: "",
+      name: "",
+      description: "",
+      actionPoints: 0,
+      impactPoints: 0,
+      co2Saved: 0,
+      waterSaved: 0,
+      wasteSaved: 0,
+      categoryId: "",
+    });
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams()
     const navigate = useNavigate();
