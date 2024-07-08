@@ -14,7 +14,7 @@ const style = {
   },
   close: "hidden",
   container: "md:w-16 sm:w-16",
-  open: "absolute w-4/12 z-40 sm:w-5/12",
+  open: "absolute z-40 md:w-4/12 lg:w-4/12 sm:w-3/12",
   default:
     "bg-[#25074D] h-screen overflow-y-auto top-0 lg:flex lg:relative lg:w-16 lg:z-auto",
 };

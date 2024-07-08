@@ -6,12 +6,26 @@ import { Loader } from "./Loader";
 import DashboardContainer from "./DashboardContainer";
 import { useNavigate } from "react-router-dom";
 import generateLoadingMessage from "../util/genericUtils";
+import { User, UserAction } from "../constants/Types";
 
 const DashboardLayout = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [userDetails, setUserDetails] = useState({});
-    const [userActions, setUserActions] = useState([]);
+    const [userDetails, setUserDetails] = useState<User>({
+      id: "",
+      email: "",
+      name: "",
+      details: "",
+      password: "",
+      UserAction: [],
+      totalUserActions: 0,
+      totalActionPoints: 0,
+      totalImpactPoints: 0,
+      totalCo2Saved: 0,
+      totalWaterSaved: 0,
+      totalWasteSaved: 0,
+    });
+    const [userActions, setUserActions] = useState<UserAction[]>([]);
 
     const getUserData = async () => {
       const loggedInUser = localStorage.getItem('user');
