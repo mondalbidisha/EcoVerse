@@ -1,37 +1,40 @@
-import { HomeIcon } from "./icons/HomeIcon";
-import { MediaIcon } from "./icons/MediaIcon";
-import { ServerIcon } from "./icons/ServerIcon";
-import { ContactIcon } from "./icons/ContactIcon";
+import { RiDashboard2Fill } from "@remixicon/react";
+import { RiNewsFill } from "@remixicon/react";
+import { RiAB } from "@remixicon/react";
+import { RiTrophyFill} from "@remixicon/react";
+import { RiLogoutBoxFill} from "@remixicon/react";
+import { RiTeamFill} from "@remixicon/react";
+import { Icon } from "@tremor/react";
 
 export const data = [
   {
     tooltip: "Dashboard",
-    icon: <HomeIcon />,
+    icon: <Icon color="violet" size="lg" icon={RiDashboard2Fill} />,
     link: "/dashboard",
   },
   {
     tooltip: "Actions",
-    icon: <HomeIcon />,
+    icon: <Icon color="violet" size="lg" icon={RiTeamFill} />,
     link: "/actions",
   },
   {
-    tooltip: "Acitity Logs",
-    icon: <MediaIcon />,
+    tooltip: "Activity Logs",
+    icon: <Icon color="violet" size="lg" icon={RiNewsFill} />,
     link: "/activity",
   },
   {
-    tooltip: "All Challenges",
-    icon: <ContactIcon />,
+    tooltip: "Challenges",
+    icon: <Icon color="violet" size="lg" icon={RiAB} />,
     link: "/challenge",
   },
   {
     tooltip: "Achievements",
-    icon: <ServerIcon />,
+    icon: <Icon color="violet" size="lg" icon={RiTrophyFill} />,
     link: "/achievements",
   },
   {
     tooltip: "Logout",
-    icon: <ServerIcon />,
+    icon: <Icon color="violet" size="lg" icon={RiLogoutBoxFill} />,
     link: "/signin",
   }
 ];
