@@ -10,10 +10,18 @@ import {
   TableRow,
 } from '@tremor/react';
 import { useEffect, useState } from 'react';
+import { UserAction } from '../constants/Types';
+
+interface TableData {
+  name: string,
+  caption: string,
+  date: Date,
+  impact: number,
+}
 
 export function DataTable(props: any) {
   const { userActions } = props;
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState<TableData[]>([]);
 
   const formatDateTime = (isoString: string): string => {
     const date = new Date(isoString);
@@ -23,11 +31,10 @@ export function DataTable(props: any) {
     return `${formattedDate} ${formattedTime}`;
   };
   
-
   const constructTableData = () => {
-    let data: any = []
-    userActions.forEach((actionObj: any) => {
-      const obj: any = {
+    let data: TableData[] = []
+    userActions.forEach((actionObj: UserAction) => {
+      const obj: TableData = {
         name: actionObj.name,
         caption: actionObj.description,
         date: actionObj.logDate,

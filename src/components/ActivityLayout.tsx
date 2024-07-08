@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
 import { DataTable } from "./DataTable";
 import generateLoadingMessage from "../util/genericUtils";
+import { UserAction } from "../constants/Types";
 
 const ActivityLayout = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const [userDetails, setUserDetails] = useState({});
-    const [userActions, setUserActions] = useState([]);
+    const [userActions, setUserActions] = useState<UserAction[]>([]);
 
     const getUserData = async () => {
       const loggedInUser = localStorage.getItem('user');

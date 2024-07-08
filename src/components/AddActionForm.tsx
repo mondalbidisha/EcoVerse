@@ -46,7 +46,7 @@ function FileInput() {
   );
 }
 
-interface userActionInput {
+interface UserActionInput {
   name: string;
   impact: number;
   description: string;
@@ -59,7 +59,7 @@ const AddActionForm = (props: any) => {
   const { action, actionId, userId } = props;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [userActionInputs, setuserActionInputs] = useState<userActionInput>({
+  const [userActionInputs, setuserActionInputs] = useState<UserActionInput>({
     name: action.name,
     impact: action.impactPoints,
     description: '',
@@ -73,12 +73,12 @@ const AddActionForm = (props: any) => {
       if (userActionInputs.description) {
         const response = await axios.post(`${BACKEND_URL}/api/v1/userAction`, userActionInputs);
         if (response && response?.data?.id) {
-          toast.success("Action logged successfully!");
+          toast.success("Action logged successfully !!");
           setTimeout(() => {
             navigate('/dashboard');
           }, 2000)
         } else {
-          toast.error('Something went wrong.');
+          toast.error('Something went wrong. Please try again.');
         }
       } else {
         toast.error('Caption field is mandatory.');
@@ -86,12 +86,12 @@ const AddActionForm = (props: any) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response?.status) {
-          toast.error(error.response?.data?.error || 'Something went wrong');
+          toast.error(error.response?.data?.error || 'Something went wrong. Please try again.');
         } else if(error.response?.data?.error) {
-          toast.error('Something went wrong');
+          toast.error('Something went wrong. Please try again.');
         }
       } else {
-        toast.error('Something went wrong');
+        toast.error('Something went wrong. Please try again.');
       }
     } finally {
       setLoading(false);

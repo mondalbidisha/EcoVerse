@@ -5,21 +5,10 @@ import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { Loader } from "./Loader";
 import AddActionForm from "./AddActionForm";
-
-type action = {
-  id: string;
-  name: string;
-  description: string;
-  actionPoints: number;
-  impactPoints: number;
-  co2Saved: number;
-  waterSaved: number;
-  wasteSaved: number;
-  categoryId: string;
-}
+import { Action } from "../constants/Types";
 
 const AddActionLayout = () => {
-    const [action, setAction] = useState<action>({
+    const [action, setAction] = useState<Action>({
       id: "",
       name: "",
       description: "",

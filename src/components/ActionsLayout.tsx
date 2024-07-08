@@ -8,13 +8,18 @@ import { ActionBox } from "./ActionBox";
 import { Loader } from "./Loader";
 import LoaderSVG from "./../assets/loader.svg";
 import generateLoadingMessage from "../util/genericUtils";
+import { Action, Category } from "../constants/Types";
 
 const ActionsLayout = () => {
 		const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
-    const [categorisedActions, setCategorisedActions] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [isCategoriesLoading, setIsCategiriesLoading] = useState(true);
+    const [categorisedActions, setCategorisedActions] = useState<Action[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<Category>({
+      id: "",
+      name: "",
+      description:""
+    });
+    const [isLoading, setIsLoading] = useState(true);
     const [isActionsLoading, setIsActionsLoading] = useState(true);
 
     const getAllActionCategories = async () => {
@@ -22,28 +27,31 @@ const ActionsLayout = () => {
       if(loggedInUser) {
         const response = await axios.get(`${BACKEND_URL}/api/v1/category`);
         setCategories(response.data.payload);
-        setSelectedCategory(response.data.payload[0].id);
-        console.log(response.data.payload[0].id)
-        setIsCategiriesLoading(false);
+        const category = response.data.payload[0];
+        setSelectedCategory(category);
+        getCategorisedActions(category);
+        setIsLoading(false);
       } else {
         navigate('/login');
       }
     }
 
-    const getCategorisedActions = async (categoryId: string) => {
+    const getCategorisedActions = async (category: Category) => {
       setIsActionsLoading(true)
-      const response = await axios.get(`${BACKEND_URL}/api/v1/action/category/${categoryId}`);
+      const response = await axios.get(`${BACKEND_URL}/api/v1/action/category/${category.id}`);
       setCategorisedActions(response.data.payload);
       setIsActionsLoading(false)
     }
 
+    const selectedCategoryAndGetActions = (category: Category) => {
+      setSelectedCategory(category);
+      getCategorisedActions(category);
+    }
+
     useEffect(() => {
-				if(isCategoriesLoading) {
+				if(isLoading) {
 					getAllActionCategories() 
 				}
-        if(selectedCategory || isActionsLoading) {
-          getCategorisedActions(selectedCategory)
-        }
     }, [categories, selectedCategory])
 
     return (
@@ -54,7 +62,7 @@ const ActionsLayout = () => {
           </div>
           <div className="w-full">
             {
-                isCategoriesLoading
+                isLoading
                 ?
                   <Loader 
                     message={generateLoadingMessage()}
@@ -65,7 +73,7 @@ const ActionsLayout = () => {
                       <DockElements 
                         categories={categories}
                         selectedCategory={selectedCategory}
-                        setSelectedCategory={setSelectedCategory}
+                        setSelectedCategory={selectedCategoryAndGetActions}
                       />
                     </div>
                     <div className="w-full grid grid-cols-1">
@@ -79,7 +87,8 @@ const ActionsLayout = () => {
                               </div>
                             :
                               <>
-                                {categorisedActions.map((item: any) => (
+                                <div className="text-white text-center whitespace-pre text-2xl font-medium">{selectedCategory?.name}</div>
+                                {categorisedActions.map((item: Action) => (
                                   /* eslint-disable react/jsx-key */
                                   <Link to={`/action/${item.id}`}>
                                     <div className="my-5 dark">

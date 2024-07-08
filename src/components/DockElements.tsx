@@ -43,7 +43,7 @@ export function DockElements(props: any) {
     <div className="flex w-full flex-col items-center justify-center overflow-hidden">
       <Dock>
         {categories.map((category:any) => (
-          <DockIcon key={category.id} clicked={() => setSelectedCategory(category.id)} isSelected={selectedCategory === category.id}>
+          <DockIcon key={category.id} clicked={() => setSelectedCategory(category)} isSelected={selectedCategory.id === category.id}>
             {categoryIconMapper(category)}
           </DockIcon>
         ))}
