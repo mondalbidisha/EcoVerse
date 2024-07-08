@@ -5,7 +5,7 @@ import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { Loader } from "./Loader";
 import AddActionForm from "./AddActionForm";
-import { Action } from "../constants/Types";
+import { Action } from "../constants/types";
 
 const AddActionLayout = () => {
     const [action, setAction] = useState<Action>({

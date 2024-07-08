@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
 import { DataTable } from "./DataTable";
 import generateLoadingMessage from "../util/genericUtils";
-import { UserAction } from "../constants/Types";
+import { UserAction } from "../constants/types";
 
 const ActivityLayout = () => {
     const navigate = useNavigate();

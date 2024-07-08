@@ -10,7 +10,7 @@ import {
   TableRow,
 } from '@tremor/react';
 import { useEffect, useState } from 'react';
-import { UserAction } from '../constants/Types';
+import { UserAction } from '../constants/types';
 
 interface TableData {
   name: string,

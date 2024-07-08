@@ -1,10 +1,14 @@
 import DashboardLayout from "../components/DashboardLayout";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const Dashboard = () => {
   return (
-    <div className="grid grid-cols-1 min-w-screen min-h-screen">
+    <ErrorBoundary>
+      <div className="grid grid-cols-1 min-w-screen min-h-screen">
         <DashboardLayout />
-    </div>
+      </div>
+    </ErrorBoundary>
+    
   );
 };
 

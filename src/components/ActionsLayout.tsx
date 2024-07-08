@@ -8,7 +8,7 @@ import { ActionBox } from "./ActionBox";
 import { Loader } from "./Loader";
 import LoaderSVG from "./../assets/loader.svg";
 import generateLoadingMessage from "../util/genericUtils";
-import { Action, Category } from "../constants/Types";
+import { Action, Category } from "../constants/types";
 
 const ActionsLayout = () => {
 		const navigate = useNavigate();

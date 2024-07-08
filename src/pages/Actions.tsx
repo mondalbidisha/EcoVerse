@@ -1,10 +1,13 @@
 import ActionsLayout from "../components/ActionsLayout";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const Actions = () => {
   return (
-    <div className="grid grid-cols-1 min-w-screen min-h-screen">
+    <ErrorBoundary>
+      <div className="grid grid-cols-1 min-w-screen min-h-screen">
         <ActionsLayout />
-    </div>
+      </div>
+    </ErrorBoundary>
   );
 };
 
