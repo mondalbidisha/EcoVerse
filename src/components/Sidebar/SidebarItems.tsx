@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/
 const style = {
   inactive: "text-gray-400",
   active: "font-medium text-white",
-  link: "flex items-center justify-start my-2 p-4 text-sm w-full hover:text-white",
+  link: "flex flex-col items-center justify-start my-2 p-4 text-sm w-full hover:text-white",
 };
 
 export function SidebarItems() {
@@ -34,7 +34,7 @@ export function SidebarItems() {
                   <TooltipTrigger asChild>
                     <span>{item.icon}</span>
                   </TooltipTrigger>
-                  <TooltipContent side={"right"}>
+                  <TooltipContent className="TooltipContent" side={"right"}>
                     <p>{item.tooltip}</p>
                   </TooltipContent>
                 </Tooltip>
