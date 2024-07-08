@@ -6,7 +6,7 @@ import { Loader } from "./Loader";
 import DashboardContainer from "./DashboardContainer";
 import { useNavigate } from "react-router-dom";
 import generateLoadingMessage from "../util/genericUtils";
-import { User, UserAction } from "../constants/Types";
+import { User, UserAction } from "../constants/types";
 
 const DashboardLayout = () => {
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ const DashboardLayout = () => {
     return (
       <Layout>
         <div className="min-h-screen grid grid-cols-1 md:grid-cols-1 bg-gradient-to-b from-slate-950 via-slate-800 to-slate-950 p-10">
-          <div className="text-center text-slate-100 md:text-3xl sm:text-lg font-medium uppercase opacity-90 tracking-[4px] m-5">
+          <div className="text-center text-slate-100 text-3xl font-medium uppercase opacity-90 tracking-[4px] m-5">
             EcoVerse - Dashboard
           </div>
           <div className="w-full">
