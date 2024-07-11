@@ -24,11 +24,17 @@ const AddActionLayout = () => {
     const navigate = useNavigate();
     const loggedInUser = localStorage.getItem('user') as any;
     const userId = JSON.parse(loggedInUser)["id"];
+    const [challengeId, setChallengeId] = useState(null);
 
     const getActionData = async () => {
       if(loggedInUser) {
         const response = await axios.get(`${BACKEND_URL}/api/v1/action/${id}`);
         setAction(response.data.payload);
+        if(!response.data.payload.categoryId) {
+          const userResponse = await axios.get(`${BACKEND_URL}/api/v1/user/challenges/${userId}`); 
+          const userDetails = userResponse.data.payload[0];
+          setChallengeId(userDetails.UserChallenge[0].challengeId);
+        }
         setIsLoading(false)
       } else {
         navigate('/login');
@@ -39,7 +45,7 @@ const AddActionLayout = () => {
         if(isLoading) {
 					getActionData()
         }
-    }, [action])
+    }, [])
 
     return (
       <Layout>
@@ -66,6 +72,7 @@ const AddActionLayout = () => {
                     action={action}
                     userId={userId}
                     actionId={id}
+                    challengeId={challengeId}
                   />
 								</div>
 							</>

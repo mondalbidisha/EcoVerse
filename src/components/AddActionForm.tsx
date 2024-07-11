@@ -50,19 +50,21 @@ interface UserActionInput {
   name: string;
   impact: number;
   description: string;
+  challengeId: string;
   actionId: string;
   userId: string;
   image?: string;
 }
 
 const AddActionForm = (props: any) => {
-  const { action, actionId, userId } = props;
+  const { action, actionId, userId, challengeId } = props;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [userActionInputs, setuserActionInputs] = useState<UserActionInput>({
     name: action.name,
     impact: action.impactPoints,
     description: '',
+    challengeId: challengeId,
     actionId: actionId,
     userId: userId
   });
@@ -71,7 +73,12 @@ const AddActionForm = (props: any) => {
     try {
       setLoading(true);
       if (userActionInputs.description) {
-        const response = await axios.post(`${BACKEND_URL}/api/v1/userAction`, userActionInputs);
+        let response;
+        if(challengeId) {
+          response = await axios.post(`${BACKEND_URL}/api/v1/challengeAction/log-challenge-action`, userActionInputs);
+        } else {
+          response = await axios.post(`${BACKEND_URL}/api/v1/userAction`, userActionInputs);
+        }        
         if (response && response?.data?.id) {
           toast.success("Action logged successfully !!");
           setTimeout(() => {

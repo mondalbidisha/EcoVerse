@@ -10,6 +10,33 @@ export interface Action {
   categoryId: string;
 }
 
+export interface UserChallenge {
+  id: string;
+  userId: string;
+  challengeId: string;
+  joinedAt: Date;
+  user?: User;
+  challenge?: Challenge;
+}
+
+export interface ChallengeAction {
+  id: string;
+  actionId: string;
+  challengeId: string;
+  action: Action;
+  challenge: Challenge;
+}
+
+export interface Challenge {
+  id: string;
+  name: string;
+  description: string;
+  createdAt?: Date
+  updatedAt?: Date
+  UserChallenges?: UserChallenge[];
+  ChallengeActions?: ChallengeAction[];
+}
+
 export interface User {
 	id: string;
   email: string;
@@ -17,10 +44,10 @@ export interface User {
   details: string;
   profilePic?: string;
   password: string;
-  creationDate?: Date
-  UserAction: UserAction[]
+  creationDate?: Date;
+  UserAction: UserAction[];
   // UserBadges    UserBadge[]
-  // UserChallenge UserChallenge[]
+  UserChallenge?: UserChallenge[];
 
   totalUserActions: number;
   totalActionPoints: number;
