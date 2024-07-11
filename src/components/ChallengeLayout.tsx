@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Layout } from "./Dashboard/Layout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { ActionBox } from "./ActionBox";
@@ -12,15 +12,27 @@ const ChallengeLayout = () => {
     const navigate = useNavigate();
     const [challenges, setChallenges] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isEnrolledInChallenge, setIsEnrolledInChallenge] = useState(false);
     const loggedInUser = localStorage.getItem('user') as any;
     const userId = JSON.parse(loggedInUser)["id"];
 
     const getAllChallenges = async () => {
-      const loggedInUser = localStorage.getItem('user');
+      const response = await axios.get(`${BACKEND_URL}/api/v1/challenge`);
+      setChallenges(response.data.payload);
+      setIsLoading(false);
+    }
+
+    const getUserDetails = async () => {
       if(loggedInUser) {
-        const response = await axios.get(`${BACKEND_URL}/api/v1/challenge`);
-        setChallenges(response.data.payload);
-        setIsLoading(false);
+        const response = await axios.get(`${BACKEND_URL}/api/v1/user/challenges/${userId}`);
+        const userDetails = response.data.payload[0];
+        const userChallenges = userDetails.UserChallenge;
+        if(userChallenges.length) {
+          setIsEnrolledInChallenge(true);
+          setIsLoading(false);
+        } else {
+          getAllChallenges();
+        }
       } else {
         navigate('/login');
       }
@@ -28,7 +40,7 @@ const ChallengeLayout = () => {
 
     useEffect(() => {
 				if(isLoading) {
-					getAllChallenges() 
+          getUserDetails();
 				}
     }, [])
 
@@ -74,9 +86,6 @@ const ChallengeLayout = () => {
             They help you focus on specific actions that support learning goals, environmental objectives, or sustainability milestones. 
             These challenges offer fun, bite-sized learning experiences, especially for tackling real-world issues in sustainability and social justice.
           </div>
-          <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-20 mb-10">
-            Click on a challenge of your choice to join and be the beacon of change !!
-          </div>
           <div className="flex flex-col flex-wrap sm:flex-row text-white">
             <div className="w-full md:px-20">
             {
@@ -86,18 +95,37 @@ const ChallengeLayout = () => {
                   <img src={LoaderSVG} width={150} height={150} alt="Loading..." />
                 </div>
               :
-                <>
-                  {challenges.map((item: any) => (
-                    <div className="my-5 dark">
-                      <ActionBox 
-                        {...item} 
-                        key={item.id} 
-                        cta={"Join Challenge"}
-                        onClick={() => joinChallenge(item.id)}
-                      />
+                isEnrolledInChallenge
+                ?
+                  <>
+                    <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-20 mb-10">
+                      You are already enrolled in a challenge. Log your sustainable action today !!
                     </div>
-                  ))}
-                </>
+                    <div className="flex flex-col items-center text-center text-slate-100">
+                      <Link to="/actions">
+                          <span className="homepage-button">
+                              <span className="homepage-button-background"></span>
+                              <span className="homepage-button-text">Log Action</span>
+                          </span>
+                      </Link>
+                    </div>
+                  </>
+                :
+                  <>
+                    <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-20 mb-10">
+                      Click on a challenge of your choice to join and be the beacon of change !!
+                    </div>
+                    {challenges.map((item: any) => (
+                      <div className="my-5 dark">
+                        <ActionBox 
+                          {...item} 
+                          key={item.id} 
+                          cta={"Join Challenge"}
+                          joinChallengeHandler={() => joinChallenge(item.id)}
+                        />
+                      </div>
+                    ))}
+                  </>
               }
             </div>
           </div>

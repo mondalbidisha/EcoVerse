@@ -1,7 +1,7 @@
 import { cn } from "../lib/utils";
 
 export function ActionBox(props: any) {
-    const { name, description, cta } = props;
+    const { name, description, cta, joinChallengeHandler } = props;
     return (
       <figure
         className={cn(
@@ -13,6 +13,7 @@ export function ActionBox(props: any) {
           // dark styles
           "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
         )}
+        onClick={() => joinChallengeHandler(null)}
       >
         <div className="flex flex-row items-center gap-3">
           <div className="flex flex-col overflow-hidden">
