@@ -95,20 +95,20 @@ const ActionsLayout = () => {
                   isEnrolledInChallenge
                   ?
                     <>
-                      <div className="text-center text-slate-100 text-xl font-medium uppercase opacity-90 tracking-[4px] mt-5 md:mb-5">
+                      <div className="text-center text-slate-100 text-xl font-medium uppercase opacity-90 tracking-[4px] mt-5 mb-5">
                         You are participating in the following challenge
                       </div>
-                      <div className="text-center text-slate-100 text-2xl font-medium uppercase opacity-90 underline underline-offset-8 tracking-[4px] md:mb-5">
+                      <div className="text-center text-slate-100 text-2xl font-medium uppercase opacity-90 underline underline-offset-8 tracking-[4px] mb-5">
                         {challenge?.name} Challenge
                       </div>
-                      <div className="w-full grid grid-cols-1">
+                      <div className="w-full grid grid-cols-1 md:px-10">
                         <div className="flex flex-col items-center overflow-y-auto mt-5 md:px-20 md:pb-20">
                           <div className="md:w-[65vw] sm:w-[80%] h-[60vh]">
                             <div className="text-white text-center whitespace-pre text-2xl font-medium">{selectedCategory?.name}</div>
                             {challengeActions.map((challengeAction: ChallengeAction) => (
                               /* eslint-disable react/jsx-key */
                               <Link to={`/action/${challengeAction.action.id}`}>
-                                <div className="my-5 dark">
+                                <div className="my-5 dark px-10">
                                   <ActionBox 
                                     {...challengeAction.action} 
                                     key={challengeAction.action.id} 
@@ -145,7 +145,7 @@ const ActionsLayout = () => {
                                   {categorisedActions.map((item: Action) => (
                                     /* eslint-disable react/jsx-key */
                                     <Link to={`/action/${item.id}`}>
-                                      <div className="my-5 dark">
+                                      <div className="my-5 dark px-10">
                                         <ActionBox {...item} key={item.id} cta={"Log Action"}/>
                                       </div>
                                     </Link>
