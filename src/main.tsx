@@ -5,7 +5,7 @@ import './index.css';
 import { registerSW } from 'virtual:pwa-register';
 
 if ('serviceWorker' in navigator) {
-  registerSW();
+  registerSW({ immediate: true });
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
