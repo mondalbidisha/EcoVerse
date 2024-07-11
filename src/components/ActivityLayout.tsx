@@ -52,11 +52,17 @@ const ActivityLayout = () => {
                   <ActivityCards 
                     userDetails={userDetails}
                   />
-                  <div className="w-full min-h-[200px] md:mx-3 mt-5">
-                    <DataTable 
-                      userActions={userActions}
-                    />
-                  </div>
+                  {
+                    userActions.length > 0 
+                    ?
+                      <div className="w-full min-h-[200px] md:mx-3 mt-5">
+                        <DataTable 
+                          userActions={userActions}
+                        />
+                      </div>
+                    :
+                      <></>
+                  }
                 </>
           } 
           </div>

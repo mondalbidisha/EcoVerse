@@ -17,8 +17,8 @@ const BadgeLayout = () => {
 
     const getUserBadges = async () => {
       if(userId) {
-        const response = await axios.get(`${BACKEND_URL}/api/v1/user/${userId}`);
-        setBadges(response.data.user.UserBadges);
+        const response = await axios.get(`${BACKEND_URL}/api/v1/badge/${userId}`);
+        setBadges(response.data.user);
         setIsLoading(false);
       } else {
         navigate('/login');

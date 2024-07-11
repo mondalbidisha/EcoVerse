@@ -26,7 +26,7 @@ export function Loader(props: any) {
             gaugePrimaryColor="rgb(79 70 229)"
             gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
             />
-        <div className="flex flex-col text-center items-center mt-10 text-slate-100 gap-2 md:text-xl sm:text-sm font-medium tracking-[4px]">
+        <div className="flex flex-col text-center items-center mt-10 text-slate-100 gap-2 md:text-xl sm:text-sm font-medium tracking-[4px] px-10">
             {message}
         </div>
     </div>

@@ -18,12 +18,12 @@ export function ActionBox(props: any) {
         <div className="flex flex-row items-center gap-3">
           <div className="flex flex-col overflow-hidden">
             <figcaption className="flex flex-row items-center whitespace-pre text-lg font-medium text-white">
-              <span className="text-md font-semibold sm:text-lg mb-5">{name}</span>
+              <span className="text-md font-semibold sm:text-lg mb-5 px-5">{name}</span>
             </figcaption>
-            <p className="text-base font-normal text-white/60 mb-5">
+            <p className="text-base font-normal text-white/60 mb-5 max-h-[70px] text-ellipsis overflow-hidden px-5">
               {description}
             </p>
-            <div className="text-sky-400 font-bold text-lg">
+            <div className="text-sky-400 font-bold text-lg px-5">
              {cta}
             </div>
           </div>

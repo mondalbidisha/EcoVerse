@@ -61,10 +61,10 @@ const AddActionLayout = () => {
 								<div className="text-center text-slate-100 text-3xl font-medium uppercase opacity-90 tracking-[4px]">
 									{action?.name}
 								</div>
-								<div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px]">
+								<div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-10">
 									{action?.description}
 								</div>
-                <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px]">
+                <div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-10">
                   Capture the moment, snap a pic, and log your sustainable action to make a big impact today!
 								</div>
 								<div className="flex flex-col flex-wrap sm:flex-row">
