@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import axios from 'axios';
+import { NOTIFICATIONS_API_URL } from './config';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBNkunlTM482LH5sWYZ6jnJblSkFOsd5yQ",
@@ -20,7 +21,7 @@ export const requestForToken = (setTokenFound: Function, userId: string) => {
     if (currentToken && userId) {
       setTokenFound(true);
       // Send the token to your server and update the UI if necessary
-      const response = await axios.post('http://localhost:3000/api/save-token', { 
+      const response = await axios.post(`${NOTIFICATIONS_API_URL}/api/save-token`, { 
         userId, 
         token: currentToken 
       });
