@@ -7,27 +7,12 @@ import Challenge from './pages/Challenge';
 import Actions from './pages/Actions';
 import Action from './pages/Action';
 import Badge from './pages/Badge';
-import { useEffect, useState } from 'react';
-import { requestForToken, onMessageListener } from './firebase-config';
+import { onMessageListener } from './firebase-config';
 import { toast, ToastContainer } from 'react-toastify';
 import Message from './components/Message';
 
 function App() {
-  const [isTokenFound, setTokenFound] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState({
-    id: ""
-  });
-
-  useEffect(() => {
-    if(loggedInUser.id) {
-      requestForToken(setTokenFound, loggedInUser.id);
-    } else {
-      const user = localStorage.getItem('user') as string;
-      const parsedUser = JSON.parse(user);
-      setLoggedInUser(parsedUser);
-    }
-  }, [loggedInUser]);
-
+  
   onMessageListener()
     .then((payload: any) => { 
       payload.notification.image = 'eco-verse.png';
@@ -50,7 +35,7 @@ function App() {
           <Route path="/" element={<Signin />} />
         </Routes>
       </BrowserRouter>
-      {isTokenFound && <ToastContainer />}
+      <ToastContainer />
     </>
   );
 }

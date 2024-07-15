@@ -12,6 +12,7 @@ import PasswordField from './PasswordField';
 import validatePassword from '../util/passwordStrength';
 import validateEmail from '../util/emailValidation';
 import { requestForToken } from '../firebase-config';
+
 const Register = () => {
   const navigate = useNavigate();
   const [isTokenFound, setTokenFound] = useState(false);
