@@ -59,7 +59,9 @@ const Register = () => {
         const { jwt, user } = response.data;
         localStorage.setItem('token', jwt);
         localStorage.setItem('user', JSON.stringify(user));
-        requestForToken(setTokenFound, user.id);
+        if(!isTokenFound) {
+          requestForToken(setTokenFound, user.id);
+        }
         navigate('/dashboard');
       } else {
         toast.error('Name, Email & Password are mandatory fields.');

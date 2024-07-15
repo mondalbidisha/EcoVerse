@@ -33,7 +33,9 @@ const Login = () => {
         const token = response.data.jwt;
         localStorage.setItem('token', token); 
         localStorage.setItem('user', JSON.stringify(response?.data?.user || {}));
-        requestForToken(setTokenFound, response?.data?.user.id);
+        if(!isTokenFound) {
+          requestForToken(setTokenFound, response?.data?.user.id);
+        }
         navigate('/dashboard');
       } else {
         toast.error('Email & Password are mandatory fields.');
