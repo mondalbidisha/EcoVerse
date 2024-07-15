@@ -21,7 +21,7 @@ export const requestForToken = (setTokenFound: Function, userId: string) => {
       setTokenFound(true);
       console.log(currentToken, userId)
       // Send the token to your server and update the UI if necessary
-      const response = await axios.post('http://localhost:3000/api/save-token', { 
+      const response = await axios.post('https://ecoverse-notify.onrender.com/api/save-token', { 
         userId, 
         token: currentToken 
       });
