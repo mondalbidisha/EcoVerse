@@ -11,8 +11,10 @@ import Spinner from './Spinner';
 import PasswordField from './PasswordField';
 import validatePassword from '../util/passwordStrength';
 import validateEmail from '../util/emailValidation';
+import { requestForToken } from '../firebase-config';
 const Register = () => {
   const navigate = useNavigate();
+  const [isTokenFound, setTokenFound] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [authInputs, setAuthInputs] = useState<SignupInput>({
     name: '',
@@ -57,6 +59,9 @@ const Register = () => {
         const { jwt, user } = response.data;
         localStorage.setItem('token', jwt);
         localStorage.setItem('user', JSON.stringify(user));
+        if(!isTokenFound) {
+          requestForToken(setTokenFound, user.id);
+        }
         navigate('/dashboard');
       } else {
         toast.error('Name, Email & Password are mandatory fields.');

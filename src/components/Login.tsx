@@ -8,9 +8,11 @@ import { toast } from 'react-toastify';
 import ToastWrapper from './ToastWrapper';
 import Spinner from './Spinner';
 import PasswordField from './PasswordField';
+import { requestForToken } from '../firebase-config';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [isTokenFound, setTokenFound] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [authInputs, setAuthInputs] = useState<SigninInput>({
     email: '',
@@ -31,6 +33,9 @@ const Login = () => {
         const token = response.data.jwt;
         localStorage.setItem('token', token); 
         localStorage.setItem('user', JSON.stringify(response?.data?.user || {}));
+        if(!isTokenFound) {
+          requestForToken(setTokenFound, response?.data?.user.id);
+        }
         navigate('/dashboard');
       } else {
         toast.error('Email & Password are mandatory fields.');
