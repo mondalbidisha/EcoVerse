@@ -19,7 +19,6 @@ export const requestForToken = (setTokenFound: Function, userId: string) => {
   return getToken(messaging, { vapidKey: 'BCxfSntJ_euSQ__bcDPPzZff3ZAN-c55PbEwnX_ZMe4i0HpeeK9RBMt4eoPHWG_WMavGgfajg9nwa638lxTwB3o' }).then(async (currentToken) => {
     if (currentToken && userId) {
       setTokenFound(true);
-      console.log(currentToken, userId)
       // Send the token to your server and update the UI if necessary
       const response = await axios.post('https://ecoverse-notify.onrender.com/api/save-token', { 
         userId, 
