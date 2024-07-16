@@ -5,8 +5,8 @@ import axios from "axios";
 import { Loader } from "./Loader";
 import DashboardContainer from "./DashboardContainer";
 import { useNavigate } from "react-router-dom";
-import generateLoadingMessage from "../util/genericUtils";
 import { User, UserAction } from "../constants/types";
+import { generateLoadingMessage } from "../util/genericUtils";
 
 const DashboardLayout = () => {
     const navigate = useNavigate();

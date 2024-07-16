@@ -12,6 +12,7 @@ import PasswordField from './PasswordField';
 import validatePassword from '../util/passwordStrength';
 import validateEmail from '../util/emailValidation';
 import { requestForToken } from '../firebase-config';
+import { hasValidFcmToken } from '../util/genericUtils';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const Register = () => {
         const { jwt, user } = response.data;
         localStorage.setItem('token', jwt);
         localStorage.setItem('user', JSON.stringify(user));
-        if(!isTokenFound) {
+        if(!isTokenFound && !hasValidFcmToken()) {
           requestForToken(setTokenFound, user.id);
         }
         navigate('/dashboard');

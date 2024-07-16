@@ -9,6 +9,7 @@ import ToastWrapper from './ToastWrapper';
 import Spinner from './Spinner';
 import PasswordField from './PasswordField';
 import { requestForToken } from '../firebase-config';
+import { hasValidFcmToken } from '../util/genericUtils';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = () => {
         const token = response.data.jwt;
         localStorage.setItem('token', token); 
         localStorage.setItem('user', JSON.stringify(response?.data?.user || {}));
-        if(!isTokenFound) {
+        if(!isTokenFound && !hasValidFcmToken()) {
           requestForToken(setTokenFound, response?.data?.user.id);
         }
         navigate('/dashboard');

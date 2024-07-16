@@ -7,8 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { ActionBox } from "./ActionBox";
 import { Loader } from "./Loader";
 import LoaderSVG from "./../assets/loader.svg";
-import generateLoadingMessage from "../util/genericUtils";
 import { Action, Category, Challenge, ChallengeAction } from "../constants/types";
+import { generateLoadingMessage } from "../util/genericUtils";
 
 const ActionsLayout = () => {
 		const navigate = useNavigate();

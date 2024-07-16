@@ -6,8 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
 import { DataTable } from "./DataTable";
-import generateLoadingMessage from "../util/genericUtils";
 import { UserAction } from "../constants/types";
+import { generateLoadingMessage } from "../util/genericUtils";
 
 const ActivityLayout = () => {
     const navigate = useNavigate();

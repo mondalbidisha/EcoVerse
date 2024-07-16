@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import axios from 'axios';
-import { NOTIFICATIONS_API_URL } from './config';
+import { NOTIFICATIONS_API_URL, VAPID_PUBLIC_API_KEY } from './config';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBNkunlTM482LH5sWYZ6jnJblSkFOsd5yQ",
@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
 export const requestForToken = (setTokenFound: Function, userId: string) => {
-  return getToken(messaging, { vapidKey: 'BCxfSntJ_euSQ__bcDPPzZff3ZAN-c55PbEwnX_ZMe4i0HpeeK9RBMt4eoPHWG_WMavGgfajg9nwa638lxTwB3o' }).then(async (currentToken) => {
+  return getToken(messaging, { vapidKey: VAPID_PUBLIC_API_KEY }).then(async (currentToken) => {
     if (currentToken && userId) {
       setTokenFound(true);
       // Send the token to your server and update the UI if necessary
