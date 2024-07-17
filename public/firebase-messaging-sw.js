@@ -17,13 +17,6 @@ const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // const notificationTitle = payload.notification.title;
-  // const notificationOptions = {
-  //   body: payload.notification.body,
-  //   image: 'eco-verse.png'
-  // };
-
-  // self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
 self.addEventListener('notificationclick', function(event) {
@@ -34,7 +27,7 @@ self.addEventListener('notificationclick', function(event) {
       // If the PWA is already open, navigate to the specific route
       for (var i = 0; i < clientList.length; i++) {
         var client = clientList[i];
-        if (client.url === '/actions' && 'focus' in client) {
+        if (client.url === 'https://eco-verse-nine.vercel.app/actions' && 'focus' in client) {
           return client.focus().then(client => client.navigate(event.notification.data.url));
         }
       }

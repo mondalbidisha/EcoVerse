@@ -12,6 +12,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import Message from './components/Message';
 
 function App() {
+  const loggedInUser = localStorage.getItem("user") as string;
+  const user = JSON.parse(loggedInUser);
   
   onMessageListener()
     .then((payload: any) => { 
@@ -32,7 +34,13 @@ function App() {
           <Route path="/action/:id" element={<Action />} />
           <Route path="/challenge" element={<Challenge />} />
           <Route path="/achievements" element={<Badge />} />
-          <Route path="/" element={<Signin />} />
+          {
+            user && user.id 
+            ? 
+              <Route path="/" element={<Dashboard />} />
+            : 
+              <Route path="/" element={<Signin />} />
+          }
         </Routes>
       </BrowserRouter>
       <ToastContainer />

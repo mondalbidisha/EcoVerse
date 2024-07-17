@@ -3,10 +3,10 @@ import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 // import { ActionBox } from "./ActionBox";
-// import { Loader } from "./Loader";
 import { useEffect, useState } from "react";
-import LoaderSVG from "./../assets/loader.svg";
 import BadgesEmptyState from "./BadgesEmptyState";
+import { Loader } from "./Loader";
+import { generateLoadingMessage } from "../util/genericUtils";
 
 const BadgeLayout = () => {
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const BadgeLayout = () => {
     const getUserBadges = async () => {
       if(userId) {
         const response = await axios.get(`${BACKEND_URL}/api/v1/badge/${userId}`);
-        setBadges(response.data.user);
+        setBadges(response.data.badges);
         setIsLoading(false);
       } else {
         navigate('/login');
@@ -40,9 +40,9 @@ const BadgeLayout = () => {
           {
               isLoading 
               ?
-                <div className="w-full flex flex-row justify-center mt-5">
-                  <img src={LoaderSVG} width={150} height={150} alt="Loading..." />
-                </div>
+                <Loader 
+                  message={generateLoadingMessage()}
+                />
               :
                 badges.length == 0
                 ?

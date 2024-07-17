@@ -28,7 +28,11 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return <h1>Sorry... there was an error</h1>;
+      return (
+        <div className="grid grid-cols-1 min-w-screen min-h-screen">
+          <h1>Something went wrong !! Please try again later ...</h1>
+        </div>
+      );
     }
 
     return this.props.children;
