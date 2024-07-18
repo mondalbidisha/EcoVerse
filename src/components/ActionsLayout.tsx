@@ -95,10 +95,10 @@ const ActionsLayout = () => {
                   isEnrolledInChallenge
                   ?
                     <>
-                      <div className="text-center text-slate-100 text-xl font-medium uppercase opacity-90 tracking-[4px] mt-5 mb-5">
+                      <div className="text-center text-slate-100 sm:text-lg md:text-xl font-medium uppercase opacity-90 tracking-[4px] mt-5 mb-5">
                         You are participating in the following challenge
                       </div>
-                      <div className="text-center text-slate-100 text-2xl font-medium uppercase opacity-90 underline underline-offset-8 tracking-[4px] mb-5">
+                      <div className="text-center text-slate-100 sm:text-xl md:text-2xl font-bold uppercase opacity-90 underline underline-offset-8 tracking-[4px] mb-5">
                         {challenge?.name} Challenge
                       </div>
                       <div className="w-full grid grid-cols-1 md:px-10">

@@ -4,7 +4,7 @@ const ActionTypeCards = () => {
 
     return (
         <>
-          <div className="w-full max-h-[270px] md:w-4/12 p-4 mb-2">
+          <div className="w-full md:max-h-[280px] md:w-4/12 p-4 mb-2">
             <NeonGradientCard className="dark max-w-md items-center justify-center text-center">
               <div className="flex flex-col px-2">
                 <div className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-3xl md:text-4xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] mb-5">
@@ -16,7 +16,7 @@ const ActionTypeCards = () => {
               </div>
             </NeonGradientCard>
           </div>
-          <div className="w-full max-h-[250px] md:w-4/12 p-4 mb-2">
+          <div className="w-full md:max-h-[250px] md:w-4/12 p-4 mb-2">
             <NeonGradientCard className="dark max-w-md items-center justify-center text-center">
               <div className="flex flex-col px-2">
 								<div className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-3xl md:text-4xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] mb-5">
@@ -28,7 +28,7 @@ const ActionTypeCards = () => {
               </div>
             </NeonGradientCard>
           </div>
-          <div className="w-full max-h-[250px] md:w-4/12 p-4 mb-2">
+          <div className="w-full md:max-h-[250px] md:w-4/12 p-4 mb-2">
             <NeonGradientCard className="dark max-w-md items-center justify-center text-center">
 							<div className="flex flex-col px-2">
 								<div className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-3xl md:text-4xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] mb-5">

@@ -54,7 +54,7 @@ const DashboardLayout = () => {
           </div>
           <div className="w-full">
             {
-                isLoading
+                false
               ?
                 <Loader 
                   message={generateLoadingMessage()}

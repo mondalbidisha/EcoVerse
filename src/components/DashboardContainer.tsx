@@ -21,7 +21,7 @@ const DashboardContainer = (props: any) => {
                         totalWasteSaved={totalWasteSaved}
                         totalWaterSaved={totalWaterSaved}
                     />
-                    <Card className="md:mx-3">
+                    <Card className="md:mx-3 my-5">
                         <p className="text-lg text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">Frequency of actions logged</p>
                         <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content leading-6">The chart displays data from the previous month up to the current day.</p>
                         <Bar 

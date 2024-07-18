@@ -33,7 +33,7 @@ const BadgeLayout = () => {
 
     return (
       <Layout>
-        <div className="min-h-screen grid grid-cols-1 md:grid-cols-1 bg-gradient-to-b from-slate-950 via-slate-800 to-slate-950 pt-10 pb-10">
+        <div className="min-h-screen grid grid-cols-1 bg-gradient-to-b from-slate-950 via-slate-800 to-slate-950 pt-10 pb-10">
           <div className="text-center text-slate-100 text-3xl font-medium uppercase opacity-90 tracking-[4px] md:mb-5">
             Badges Earned
           </div>
@@ -48,7 +48,9 @@ const BadgeLayout = () => {
                 ?
                   <BadgesEmptyState />
                 :
-                  <UserBadgesLayout badges={badges}/>
+                  <div className="px-20">
+                    <UserBadgesLayout badges={badges}/>
+                  </div>
           }
         </div>
       </Layout>

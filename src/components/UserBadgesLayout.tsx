@@ -62,20 +62,27 @@ const UserBadgesLayout = (props: any) => {
     
     return ( 
         <>
-            <div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] mb-5 px-20">
-                Actions are themed into fun badges! Log and master multiple actions to earn your badges, each with unique requirements. Start your exciting journey to collect them all by logging your actions today!
+            <div className="text-center text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] mb-10 md:px-20">
+                Congratulations on logging your sustainable actions and earning badges! 🌟 
+            </div>
+            <div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] mb-10 md:px-20">
+                Your commitment to a greener future is truly inspiring. 
+                Every action you take helps create a more sustainable world for everyone. 
+                Keep up the fantastic work, and continue to make a positive impact. 
+                Together, we can achieve a brighter, greener future! 🌿✨
             </div>
             <div className="w-full grid grid-cols-1">
                 <div className="flex flex-col items-center text-center text-slate-100">
                     <div className="flex flex-row">
                         {badges.map((badge: any) => (
                             <div key={badge.id} className="flex-shrink-0">
-                            <img
-                                src={getBadgeIconPath(badge.name)}
-                                width={150}
-                                height={150}
-                                className="rounded-full"
-                            />
+                                <img
+                                    src={getBadgeIconPath(badge.name)}
+                                    width={150}
+                                    height={150}
+                                    className="rounded-full"
+                                />
+                            <div className="mt-5 text-white text-xl">{badge.name}</div>
                             </div>
                         ))}
                     </div>
