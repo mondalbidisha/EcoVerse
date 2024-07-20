@@ -49,7 +49,7 @@ const AddActionLayout = () => {
 
     return (
       <Layout>
-        <div className="min-h-screen grid grid-cols-1 md:grid-cols-1 bg-gradient-to-b from-slate-950 via-slate-800 to-slate-950 p-10">
+        <div className="min-h-screen grid grid-cols-1 md:grid-cols-1 bg-gradient-to-b from-slate-950 via-slate-800 to-slate-950 p-10 md:py-10 md:px-20">
           {
             isLoading
             ?
@@ -58,13 +58,13 @@ const AddActionLayout = () => {
 							/>
 						:
 							<>
-								<div className="text-center text-slate-100 text-3xl font-medium uppercase opacity-90 tracking-[4px]">
+								<div className="text-center text-slate-100 text-3xl font-medium uppercase opacity-90 tracking-[4px] mb-10">
 									{action?.name}
 								</div>
-								<div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-10">
+								<div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-10 mb-5">
 									{action?.description}
 								</div>
-                <div className="text-justify text-slate-100 sm:text-sm md:text-xl font-medium opacity-90 tracking-[2px] md:px-10">
+                <div className="text-justify text-slate-100 sm:text-base md:text-xl font-medium opacity-90 tracking-[2px] md:px-10 mb-5">
                   Capture the moment, snap a pic, and log your sustainable action to make a big impact today!
 								</div>
 								<div className="flex flex-col flex-wrap sm:flex-row">
