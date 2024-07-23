@@ -55,7 +55,7 @@ const ChallengeLayout = () => {
       if (response && response?.data?.id) {
         toast.success('Challenge enrollment successfull!');
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/actions');
         }, 2000);
       } else {
         toast.error('Something went wrong.');

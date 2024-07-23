@@ -43,7 +43,7 @@ export function DataTable(props: any) {
   }, [userActions]);
 
   return (
-    <Card>
+    <Card id="datatable-card-id">
       <h3 className="text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
         List of Actions Logged
       </h3>

@@ -40,6 +40,11 @@
   }
 }
 
+#datatable-card-id {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 .TooltipContent {
   border-radius: 4px;
   padding: 10px 15px;
