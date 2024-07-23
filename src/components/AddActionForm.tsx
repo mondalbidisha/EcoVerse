@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from './Spinner';
 
 function TextInput({ label, ...props }: React.ComponentPropsWithoutRef<'input'> & { label: string }) {
-  let id = useId();
+  const id = useId();
 
   return (
     <div className="group relative z-0 transition-all focus-within:z-10">
@@ -29,16 +29,16 @@ function TextInput({ label, ...props }: React.ComponentPropsWithoutRef<'input'> 
 }
 
 function FileInput() {
-  let id = useId();
+  const id = useId();
 
   return (
     <div className="group relative z-0 transition-all focus-within:z-10">
       <input
         type="file"
         id={id}
-        accept="image/*" 
+        accept="image/*"
         capture="environment"
-        name="image" 
+        name="image"
         autoComplete="none"
         className="peer block w-full border border-gray-500/20 bg-transparent px-6 pb-8 pt-8 text-base/6 text-white ring-2 ring-transparent transition focus:outline-none focus:ring-blue-400 group-first:rounded-t-2xl group-last:rounded-b-2xl"
       />
@@ -66,7 +66,7 @@ const AddActionForm = (props: any) => {
     description: '',
     challengeId: challengeId,
     actionId: actionId,
-    userId: userId
+    userId: userId,
   });
 
   async function sendRequest() {
@@ -74,16 +74,16 @@ const AddActionForm = (props: any) => {
       setLoading(true);
       if (userActionInputs.description) {
         let response;
-        if(challengeId) {
+        if (challengeId) {
           response = await axios.post(`${BACKEND_URL}/api/v1/challengeAction/log-challenge-action`, userActionInputs);
         } else {
           response = await axios.post(`${BACKEND_URL}/api/v1/userAction`, userActionInputs);
-        }        
+        }
         if (response && response?.data?.id) {
-          toast.success("Action logged successfully !!");
+          toast.success('Action logged successfully !!');
           setTimeout(() => {
             navigate('/dashboard');
-          }, 2000)
+          }, 2000);
         } else {
           toast.error('Something went wrong. Please try again.');
         }
@@ -94,7 +94,7 @@ const AddActionForm = (props: any) => {
       if (axios.isAxiosError(error)) {
         if (error.response?.status) {
           toast.error(error.response?.data?.error || 'Something went wrong. Please try again.');
-        } else if(error.response?.data?.error) {
+        } else if (error.response?.data?.error) {
           toast.error('Something went wrong. Please try again.');
         }
       } else {
@@ -103,32 +103,31 @@ const AddActionForm = (props: any) => {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
-      <>
-        <div className="w-full md:pb-10 md:px-10">
-          <div className="isolate mt-6 -space-y-px rounded-2xl bg-gray-900/20">
-            <TextInput 
-              label="Add a caption" 
-              name="caption" 
-              autoComplete="none" 
-              onChange={(event) => {
-                setuserActionInputs({ ...userActionInputs, description: event.target.value });
-              }}
-            />
-            <FileInput />
-          </div>
-          <div className="flex justify-end">
-            <button id="saveForm" className="mt-6" disabled={loading} onClick={sendRequest}>
-              Log Action {loading && <Spinner className="w-4 h-4" />}
-            </button>
-          </div>
+    <>
+      <div className="w-full md:pb-10 md:px-10">
+        <div className="isolate mt-6 -space-y-px rounded-2xl bg-gray-900/20">
+          <TextInput
+            label="Add a caption"
+            name="caption"
+            autoComplete="none"
+            onChange={(event) => {
+              setuserActionInputs({ ...userActionInputs, description: event.target.value });
+            }}
+          />
+          <FileInput />
         </div>
-        <ToastWrapper />
-      </>
-    );
-  };
-  
-export default AddActionForm;
+        <div className="flex justify-end">
+          <button id="saveForm" className="mt-6" disabled={loading} onClick={sendRequest}>
+            Log Action {loading && <Spinner className="w-4 h-4" />}
+          </button>
+        </div>
+      </div>
+      <ToastWrapper />
+    </>
+  );
+};
 
+export default AddActionForm;

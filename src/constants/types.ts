@@ -1,10 +1,10 @@
 export interface Action {
-	id: string;            
+  id: string;
   name: string;
   description: string;
   actionPoints: number;
   impactPoints: number;
-  co2Saved: number; 
+  co2Saved: number;
   waterSaved: number;
   wasteSaved: number;
   categoryId: string;
@@ -31,14 +31,14 @@ export interface Challenge {
   id: string;
   name: string;
   description: string;
-  createdAt?: Date
-  updatedAt?: Date
+  createdAt?: Date;
+  updatedAt?: Date;
   UserChallenges?: UserChallenge[];
   ChallengeActions?: ChallengeAction[];
 }
 
 export interface User {
-	id: string;
+  id: string;
   email: string;
   name: string;
   details: string;
@@ -58,18 +58,18 @@ export interface User {
 }
 
 export interface UserAction {
-	id: string;
+  id: string;
   name: string;
   impact: number;
   userId: string;
   actionId: string;
   logDate: Date;
   description: string;
-  image?: string; 
+  image?: string;
 }
 
 export interface Category {
-	id: string;
+  id: string;
   name: string;
   description: string;
-} 
+}

@@ -1,8 +1,7 @@
 import { BarChart } from '@tremor/react';
 import { useEffect, useState } from 'react';
 
-const dataFormatter = (number: number) =>
-  Intl.NumberFormat('us').format(number).toString();
+const dataFormatter = (number: number) => Intl.NumberFormat('us').format(number).toString();
 
 export const Bar = (props: any) => {
   const { userActions } = props;
@@ -22,24 +21,24 @@ export const Bar = (props: any) => {
       }
       return acc;
     }, {});
-  
+
     return Object.values(actionCounts);
   };
-  
+
   const prepareChartData = () => {
     const actionCounts = countActionOccurrences(userActions);
     const userActionsData: any = actionCounts.map((action: any) => ({
       name: action.name,
       'Number of actions logged': action.count,
     }));
-    setChartData(userActionsData)
-  }
+    setChartData(userActionsData);
+  };
 
   useEffect(() => {
-    if(userActions && userActions.length > 0) {
-      prepareChartData()
+    if (userActions && userActions.length > 0) {
+      prepareChartData();
     }
-  }, [userActions])
+  }, [userActions]);
 
   return (
     <BarChart
@@ -52,5 +51,3 @@ export const Bar = (props: any) => {
     />
   );
 };
-  
-  

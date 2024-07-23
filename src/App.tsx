@@ -12,16 +12,16 @@ import { toast, ToastContainer } from 'react-toastify';
 import Message from './components/Message';
 
 function App() {
-  const loggedInUser = localStorage.getItem("user") as string;
+  const loggedInUser = localStorage.getItem('user') as string;
   const user = JSON.parse(loggedInUser);
-  
+
   onMessageListener()
-    .then((payload: any) => { 
+    .then((payload: any) => {
       payload.notification.image = 'eco-verse.png';
       toast(<Message notification={payload.notification} />);
     })
-    .catch(err => console.log('failed: ', err));
-    
+    .catch((err) => console.log('failed: ', err));
+
   return (
     <>
       <BrowserRouter>
@@ -34,13 +34,7 @@ function App() {
           <Route path="/action/:id" element={<Action />} />
           <Route path="/challenge" element={<Challenge />} />
           <Route path="/achievements" element={<Badge />} />
-          {
-            user && user.id 
-            ? 
-              <Route path="/" element={<Dashboard />} />
-            : 
-              <Route path="/" element={<Signin />} />
-          }
+          {user && user.id ? <Route path="/" element={<Dashboard />} /> : <Route path="/" element={<Signin />} />}
         </Routes>
       </BrowserRouter>
       <ToastContainer />

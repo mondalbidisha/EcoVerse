@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface DashboardProviderProps {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export function DashboardProvider({ children }: DashboardProviderProps) {
 
   // set the html tag overflow to hidden
   React.useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.overflow = 'hidden';
   }, []);
 
   // close Sidebar on route changes when viewport is less than 1024px
@@ -40,11 +40,7 @@ export function DashboardProvider({ children }: DashboardProviderProps) {
     };
   }, [location, sidebarOpen]);
 
-  return (
-    <Context.Provider value={{ sidebarOpen, openSidebar, closeSidebar }}>
-      {children}
-    </Context.Provider>
-  );
+  return <Context.Provider value={{ sidebarOpen, openSidebar, closeSidebar }}>{children}</Context.Provider>;
 }
 
 // custom hook to consume all context values { sidebarOpen, openSidebar, closeSidebar }

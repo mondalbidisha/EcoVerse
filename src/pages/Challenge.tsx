@@ -1,5 +1,5 @@
-import ChallengeLayout from "../components/ChallengeLayout";
-import ErrorBoundary from "../components/ErrorBoundary";
+import ChallengeLayout from '../components/ChallengeLayout';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const Challenge = () => {
   return (

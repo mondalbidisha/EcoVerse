@@ -61,7 +61,7 @@ const Register = () => {
         const { jwt, user } = response.data;
         localStorage.setItem('token', jwt);
         localStorage.setItem('user', JSON.stringify(user));
-        if(!isTokenFound && !hasValidFcmToken()) {
+        if (!isTokenFound && !hasValidFcmToken()) {
           requestForToken(setTokenFound, user.id);
         }
         navigate('/dashboard');

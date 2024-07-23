@@ -1,5 +1,5 @@
-import ActionsLayout from "../components/ActionsLayout";
-import ErrorBoundary from "../components/ErrorBoundary";
+import ActionsLayout from '../components/ActionsLayout';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const Actions = () => {
   return (

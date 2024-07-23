@@ -1,5 +1,5 @@
-import BadgeLayout from "../components/BadgeLayout";
-import ErrorBoundary from "../components/ErrorBoundary";
+import BadgeLayout from '../components/BadgeLayout';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const Badge = () => {
   return (

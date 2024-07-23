@@ -1,5 +1,5 @@
-import ActivityLayout from "../components/ActivityLayout";
-import ErrorBoundary from "../components/ErrorBoundary";
+import ActivityLayout from '../components/ActivityLayout';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const Activity = () => {
   return (

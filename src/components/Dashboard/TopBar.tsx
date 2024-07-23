@@ -1,8 +1,8 @@
-import Avatar from "../Avatar";
-import { useDashboardContext } from "./Provider";
+import Avatar from '../Avatar';
+import { useDashboardContext } from './Provider';
 
 export function TopBar() {
-  const loggedInUser = localStorage.getItem("user") as string;
+  const loggedInUser = localStorage.getItem('user') as string;
   const user = JSON.parse(loggedInUser);
 
   const getInitials = () => {
@@ -19,8 +19,11 @@ export function TopBar() {
     }
 
     // If there are more than two words, return the first letter of the first two words
-    return nameParts.slice(0, 2).map((word: string) => word.charAt(0).toUpperCase()).join('');
-  }
+    return nameParts
+      .slice(0, 2)
+      .map((word: string) => word.charAt(0).toUpperCase())
+      .join('');
+  };
 
   const { openSidebar } = useDashboardContext();
   return (

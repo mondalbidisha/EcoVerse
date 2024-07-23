@@ -1,40 +1,40 @@
-import { RiDashboard2Fill } from "@remixicon/react";
-import { RiNewsFill } from "@remixicon/react";
-import { RiAB } from "@remixicon/react";
-import { RiTrophyFill} from "@remixicon/react";
-import { RiLogoutBoxFill} from "@remixicon/react";
-import { RiTeamFill} from "@remixicon/react";
-import { Icon } from "@tremor/react";
+import { RiDashboard2Fill } from '@remixicon/react';
+import { RiNewsFill } from '@remixicon/react';
+import { RiAB } from '@remixicon/react';
+import { RiTrophyFill } from '@remixicon/react';
+import { RiLogoutBoxFill } from '@remixicon/react';
+import { RiTeamFill } from '@remixicon/react';
+import { Icon } from '@tremor/react';
 
 export const data = [
   {
-    tooltip: "Dashboard",
+    tooltip: 'Dashboard',
     icon: <Icon color="violet" size="lg" icon={RiDashboard2Fill} />,
-    link: "/dashboard",
+    link: '/dashboard',
   },
   {
-    tooltip: "Actions",
+    tooltip: 'Actions',
     icon: <Icon color="violet" size="lg" icon={RiTeamFill} />,
-    link: "/actions",
+    link: '/actions',
   },
   {
-    tooltip: "Activity Logs",
+    tooltip: 'Activity Logs',
     icon: <Icon color="violet" size="lg" icon={RiNewsFill} />,
-    link: "/activity",
+    link: '/activity',
   },
   {
-    tooltip: "Challenges",
+    tooltip: 'Challenges',
     icon: <Icon color="violet" size="lg" icon={RiAB} />,
-    link: "/challenge",
+    link: '/challenge',
   },
   {
-    tooltip: "Achievements",
+    tooltip: 'Achievements',
     icon: <Icon color="violet" size="lg" icon={RiTrophyFill} />,
-    link: "/achievements",
+    link: '/achievements',
   },
   {
-    tooltip: "Logout",
+    tooltip: 'Logout',
     icon: <Icon color="violet" size="lg" icon={RiLogoutBoxFill} />,
-    link: "/signin",
-  }
+    link: '/signin',
+  },
 ];

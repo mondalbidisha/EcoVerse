@@ -32,9 +32,9 @@ const Login = () => {
       if (authInputs.email && authInputs.password) {
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, authInputs);
         const token = response.data.jwt;
-        localStorage.setItem('token', token); 
+        localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(response?.data?.user || {}));
-        if(!isTokenFound && !hasValidFcmToken()) {
+        if (!isTokenFound && !hasValidFcmToken()) {
           requestForToken(setTokenFound, response?.data?.user.id);
         }
         navigate('/dashboard');
@@ -45,7 +45,7 @@ const Login = () => {
       if (axios.isAxiosError(error)) {
         if (error.response?.status) {
           toast.error(error.response?.data?.error || 'Email or Password Mismatch');
-        } else if(error.response?.data?.error) {
+        } else if (error.response?.data?.error) {
           toast.error('Something went wrong');
         }
       } else {

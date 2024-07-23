@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import GaugeCircle from "./magicui/gauge-circle";
+import { useEffect, useState } from 'react';
+import GaugeCircle from './magicui/gauge-circle';
 
 export function Loader(props: any) {
   const { message } = props;
@@ -19,17 +19,16 @@ export function Loader(props: any) {
 
   return (
     <div className="flex flex-col items-center justify-center w-full scroll-smooth">
-        <GaugeCircle
-            max={100}
-            min={0}
-            value={value}
-            gaugePrimaryColor="rgb(79 70 229)"
-            gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
-            />
-        <div className="flex flex-col text-center items-center mt-10 text-slate-100 gap-2 md:text-xl sm:text-sm font-medium tracking-[4px] px-10">
-            {message}
-        </div>
+      <GaugeCircle
+        max={100}
+        min={0}
+        value={value}
+        gaugePrimaryColor="rgb(79 70 229)"
+        gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+      />
+      <div className="flex flex-col text-center items-center mt-10 text-slate-100 gap-2 md:text-xl sm:text-sm font-medium tracking-[4px] px-10">
+        {message}
+      </div>
     </div>
-    
   );
 }
