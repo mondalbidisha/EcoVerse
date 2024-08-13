@@ -10,6 +10,7 @@ import Badge from './pages/Badge';
 import { onMessageListener } from './firebase-config';
 import { toast, ToastContainer } from 'react-toastify';
 import Message from './components/Message';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const loggedInUser = localStorage.getItem('user') as string;
@@ -37,6 +38,7 @@ function App() {
           {user && user.id ? <Route path="/" element={<Dashboard />} /> : <Route path="/" element={<Signin />} />}
         </Routes>
       </BrowserRouter>
+      <Analytics />
       <ToastContainer />
     </>
   );
